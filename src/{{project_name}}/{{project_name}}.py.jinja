@@ -8,7 +8,7 @@ import os
 class {{project_name}}PrintListener({{project_name}}Listener):
     def __init__(self,outfile):
         self.of=open(outfile,'w')
-        super.__init__()
+        super().__init__()
 
     def enterBullet(self, ctx):
         print(f"# {ctx.string().getText()}",file=self.of)
