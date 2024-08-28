@@ -2,7 +2,6 @@
 function_name:
   type: str
   help: function_name -- This will be the name of the parser
-
 project_name:
   type: str
   default: {{function_name}}
