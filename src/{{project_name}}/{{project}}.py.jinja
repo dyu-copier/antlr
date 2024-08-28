@@ -1,0 +1,28 @@
+from antlr4 import *
+from {{project}}Lexer import {{project}}Lexer
+from {{project}}Listener import {{project}}Listener
+from {{project}}Parser import {{project}}Parser
+import sys
+import os
+
+class {{project}}PrintListener({{project}}Listener):
+    def enterBullet(self, ctx):
+        print(f"# {ctx.string().getText()}")
+    def enterHex(self,ctx):
+        path=os.path.expanduser(f"~/tasknotes/{ctx.getText()}.md")
+        if os.path.exists(path):
+            with open(path,'r') as r:
+                print(r.read())
+    
+
+def main():
+    lexer = {{project}}Lexer(StdinStream())
+    stream = CommonTokenStream(lexer)
+    parser = {{project}}Parser(stream)
+    tree = parser.top()
+    printer = {{project}}PrintListener()
+    walker = ParseTreeWalker()
+    walker.walk(printer, tree)
+
+if __name__ == '__main__':
+    main()

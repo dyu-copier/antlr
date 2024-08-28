@@ -1,0 +1,27 @@
+from {{project}} import runParser
+"""Command Line Interface."""
+
+import subprocess
+
+import copier
+import typer
+
+app = typer.Typer()
+
+
+@app.command()
+def run() -> None:
+    """Run command."""
+    print("Hello World")
+
+@app.command()
+def {{project_name}}(filename:str) -> None:
+    """{{short_desc}}"""
+    with open(filename,'r') as file:
+        runParser(file)
+
+
+@app.callback(no_args_is_help=True)
+def main() -> None:
+    """CLI for {{project_name}} Parser Library."""
+typer_click_object = typer.main.get_command(app)

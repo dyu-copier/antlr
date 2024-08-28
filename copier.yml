@@ -1,0 +1,22 @@
+#Questions
+function_name:
+  type: str
+  help: function_name -- This will be the name of the parser
+
+project_name:
+  type: str
+  default: {{function_name}}
+  help: ProjectName-- The ProjectName should be <function>
+short_desc:
+  type: str
+  help: short description
+long_desc:
+  type: str
+  help: long description
+author:
+  type: str
+  help: Author
+email:
+  type: str
+  help: email
+

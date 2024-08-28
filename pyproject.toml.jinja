@@ -1,0 +1,25 @@
+[project]
+name = "{{project_name}}"
+version = "0.1.0"
+description = "{{short_desc}}"
+authors = [
+    {name = "{{author}}", email = "{{email}}"},
+]
+dependencies = [
+    "peakrdl",
+    "systemrdl-compiler>=1.27.3",
+]
+requires-python = ">=3.10"
+readme = "README.md"
+license = {text = "MIT"}
+scripts.{{project_name}} = "{{project_name}}.cli:app"
+
+[build-system]
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
+
+[project.entry-points."peakrdl.exporters"]
+{{function_name}} = "{{project_name}}.__peakrdl__:Exporter"
+
+[tool.pdm]
+distribution = true
