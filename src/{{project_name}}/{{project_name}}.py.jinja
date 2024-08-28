@@ -15,8 +15,8 @@ class {{project}}PrintListener({{project}}Listener):
                 print(r.read())
     
 
-def main():
-    lexer = {{project}}Lexer(StdinStream())
+def runParser(file):
+    lexer = {{project}}Lexer(FileStream(file))
     stream = CommonTokenStream(lexer)
     parser = {{project}}Parser(stream)
     tree = parser.top()
@@ -25,4 +25,4 @@ def main():
     walker.walk(printer, tree)
 
 if __name__ == '__main__':
-    main()
+    runParser()
