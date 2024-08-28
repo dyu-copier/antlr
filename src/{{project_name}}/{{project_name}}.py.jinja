@@ -6,21 +6,25 @@ import sys
 import os
 
 class {{project_name}}PrintListener({{project_name}}Listener):
+    def __init__(self,outfile):
+        self.of=open(outfile,'w')
+        super.__init__()
+
     def enterBullet(self, ctx):
-        print(f"# {ctx.string().getText()}")
+        print(f"# {ctx.string().getText()}",file=self.of)
     def enterHex(self,ctx):
         path=os.path.expanduser(f"~/tasknotes/{ctx.getText()}.md")
         if os.path.exists(path):
             with open(path,'r') as r:
-                print(r.read())
+                print(r.read(),file=self.of)
     
 
-def runParser(file):
-    lexer = {{project_name}}Lexer(FileStream(file))
+def runParser(infile,outfile):
+    lexer = {{project_name}}Lexer(FileStream(infile))
     stream = CommonTokenStream(lexer)
     parser = {{project_name}}Parser(stream)
     tree = parser.top()
-    printer = {{project_name}}PrintListener()
+    printer = {{project_name}}PrintListener(outfile)
     walker = ParseTreeWalker()
     walker.walk(printer, tree)
 

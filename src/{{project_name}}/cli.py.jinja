@@ -11,10 +11,9 @@ def run() -> None:
     print("Hello World")
 
 @app.command()
-def {{project_name}}(filename:str) -> None:
+def {{project_name}}(infile:str,outfile:str) -> None:
     """{{short_desc}}"""
-    with open(filename,'r') as file:
-        runParser(file)
+    runParser(infile,outfile)
 
 
 @app.callback(no_args_is_help=True)
