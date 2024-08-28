@@ -4,7 +4,7 @@ function_name:
   help: function_name -- This will be the name of the parser
 project_name:
   type: str
-  default: {{function_name}}
+  default: "{{function_name}}"
   help: ProjectName-- The ProjectName should be <function>
 short_desc:
   type: str
